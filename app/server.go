@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func handleClient(conn net.Conn) {
+func handle(conn net.Conn) {
 	_, err := conn.Write([]byte("+PONG\r\n"))
 	if err != nil {
 		fmt.Println("error command pong: ", err.Error())
@@ -27,7 +27,7 @@ func main() {
 		os.Exit(1)
 	}
 	for {
-		conn, err = l.Accept()
+		conn, err := l.Accept()
 		if err != nil {
 			fmt.Println("Error accepting connection: ", err.Error())
 			os.Exit(1)
